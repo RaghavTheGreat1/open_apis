@@ -14,7 +14,9 @@ func ifscToBankInfo() {
 	fmt.Scanf("%s", &ifscCode)
 	bankDetails, _ := fetchBankDetails(ifscCode)
 	if bankDetails != nil {
-		fmt.Printf("%+v", *bankDetails)
+		// Gets the a pretty formatted output 
+		indentedOutput, _ := json.MarshalIndent(*bankDetails, "", "")
+		fmt.Printf("%v", string(indentedOutput))
 	}
 }
 
